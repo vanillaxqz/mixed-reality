@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="book" size="0.200000 0.266667" />
+    <ImageTarget name="xbox" size="0.200000 0.266667" />
+  </Tracking>
+</QCARConfig>
