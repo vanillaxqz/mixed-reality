@@ -9,10 +9,11 @@ public class HitCounter : MonoBehaviour
     public GameObject FlagBase;
     public GUIStyle Style;
 
-
     //hitCount is the same as the score in golf
     private int hitCount;
     private bool isGameOver;
+    private MeshRenderer meshRenderer;
+    private Color originalColor;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,9 @@ public class HitCounter : MonoBehaviour
         Style.fontSize = 25;
         hitCount = 0;
         isGameOver = false;
+        meshRenderer = GetComponent<MeshRenderer>();
+        originalColor = meshRenderer.material.color;
+
     }
 
     // Update is called once per frame
@@ -45,12 +49,20 @@ public class HitCounter : MonoBehaviour
         if (collision.gameObject == GolfClub)
         {
             hitCount++;
-            Debug.Log("Hit!");
+            meshRenderer.material.color = Color.yellow;
         }
 
         if (collision.gameObject == FlagBase)
         {
             isGameOver = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject == GolfClub)
+        {
+            meshRenderer.material.color = originalColor;
         }
     }
 }
